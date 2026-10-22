@@ -1,0 +1,16 @@
+name: Feature request / 功能建议
+description: Describe a workflow the monitor could support better.
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What workflow is difficult today? / 当前遇到的问题
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Suggested behavior / 建议的行为
+      description: Include terminal and platform details when relevant.
+    validations:
+      required: true

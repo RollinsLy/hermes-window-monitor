@@ -4,14 +4,13 @@
 Hermes Window Monitor
 =====================
 
-A tiny always-on-top indicator bar that shows one lamp per open Hermes
+A tiny always-on-top indicator bar that shows one horse per open Hermes
 chat window (cmd.exe terminal hosting a `hermes ... chat` session).
 
-  * GREEN  -> the session's worker process had CPU activity in the last
-              few seconds (it is generating / running tools / printing).
-  * RED    -> idle: the turn is finished, it is your move now.
+  * Galloping -> CPU activity was observed recently in a background session.
+  * Grazing   -> no recent activity; this is a heuristic, not a completion event.
 
-Click any lamp to bring that terminal window to the foreground so you can
+Click any horse to bring that terminal window to the foreground so you can
 type into it.
 
 Why lamps are grouped by window handle (HWND):
@@ -25,6 +24,7 @@ Requirements: Windows, Python 3.8+, psutil.
 Standard library only otherwise (tkinter + ctypes).
 """
 
+import argparse
 import ctypes
 import math
 import re
@@ -69,12 +69,27 @@ COLOR_FG = "#dddddd"
 # --------------------------------------------------------------------------
 # Win32 plumbing
 # --------------------------------------------------------------------------
+if sys.platform != "win32":
+    sys.stderr.write("Hermes Window Monitor only runs on Windows.\n")
+    sys.exit(1)
+
 user32 = ctypes.windll.user32
 kernel32 = ctypes.windll.kernel32
 
 user32.GetWindowTextLengthW.restype = ctypes.c_int
+user32.GetWindowTextLengthW.argtypes = [wintypes.HWND]
 user32.GetWindowThreadProcessId.restype = wintypes.DWORD
 user32.GetClassNameW.restype = ctypes.c_int
+user32.GetClassNameW.argtypes = [wintypes.HWND, wintypes.LPWSTR, ctypes.c_int]
+user32.GetWindowTextW.argtypes = [wintypes.HWND, wintypes.LPWSTR, ctypes.c_int]
+user32.IsWindowVisible.argtypes = [wintypes.HWND]
+user32.GetForegroundWindow.restype = wintypes.HWND
+user32.ShowWindow.argtypes = [wintypes.HWND, ctypes.c_int]
+user32.GetWindowThreadProcessId.argtypes = [wintypes.HWND, ctypes.POINTER(wintypes.DWORD)]
+user32.SetForegroundWindow.argtypes = [wintypes.HWND]
+user32.SetActiveWindow.argtypes = [wintypes.HWND]
+user32.SetActiveWindow.restype = wintypes.HWND
+user32.BringWindowToTop.argtypes = [wintypes.HWND]
 EnumWindowsProc = ctypes.WINFUNCTYPE(ctypes.c_bool, wintypes.HWND, wintypes.LPARAM)
 
 SW_RESTORE = 9
@@ -439,13 +454,15 @@ class Tooltip:
 # The lamp bar app
 # --------------------------------------------------------------------------
 class MonitorApp:
-    def __init__(self):
+    def __init__(self, demo=False):
+        self.demo = demo
+        self.demo_started = time.monotonic()
         self.proc_cache = {}        # pid -> psutil.Process (keeps cpu_percent baseline)
         self.last_active = {}       # hwnd -> timestamp of last detected activity
         self.lamps = {}             # hwnd -> dict of widgets + state
 
         self.root = tk.Tk()
-        self.root.title("Hermes Monitor")
+        self.root.title("Hermes Monitor — Demo" if demo else "Hermes Monitor")
         self.root.overrideredirect(True)
         self.root.attributes("-topmost", True)
         self.root.configure(bg=COLOR_BG)
@@ -463,6 +480,10 @@ class MonitorApp:
         self.handle.pack(side="left")
         self._make_draggable(self.handle)
         self._make_draggable(outer)
+
+        if demo:
+            tk.Label(outer, text="DEMO", bg=COLOR_BG, fg=COLOR_HORSE,
+                     font=self.font, padx=6).pack(side="left")
 
         self.bar = tk.Frame(outer, bg=COLOR_BG)
         self.bar.pack(side="left", padx=2, pady=3)
@@ -504,6 +525,8 @@ class MonitorApp:
                 "label": label, "state": "red", "sess": sess}
 
         def _click(_evt, h=hwnd):
+            if self.demo:
+                return
             cur = self.lamps.get(h)
             if cur:
                 bring_to_front(cur["sess"]["hwnd"])
@@ -523,6 +546,10 @@ class MonitorApp:
         title = sess["title"] or "(no title)"
         horse_state = "running (working)" if lamp["state"] == "green" \
             else "grazing (idle)"
+        if self.demo:
+            return (f"DEMO: simulated {sess['profile']} session\n"
+                    f"state: {horse_state}\n"
+                    "No processes are scanned; click-to-focus is disabled.")
         return (f"profile: {sess['profile']}\n"
                 f"state:   {horse_state}\n"
                 f"title:   {title}\n"
@@ -537,7 +564,10 @@ class MonitorApp:
     # -- main loop --------------------------------------------------------
     def tick(self):
         try:
-            self._refresh()
+            if self.demo:
+                self._refresh_demo()
+            else:
+                self._refresh()
         except Exception as exc:  # never let the UI loop die silently
             sys.stderr.write(f"[scan error] {exc}\n")
         self.root.after(SCAN_INTERVAL_MS, self.tick)
@@ -551,6 +581,19 @@ class MonitorApp:
         except Exception as exc:
             sys.stderr.write(f"[anim error] {exc}\n")
         self.root.after(ANIM_INTERVAL_MS, self.animate)
+
+    def _refresh_demo(self):
+        """Preview real horse widgets without reading or focusing any processes."""
+        phase = int((time.monotonic() - self.demo_started) / 6) % 2
+        for index, profile in enumerate(("code", "research", "review")):
+            hwnd = -(index + 1)
+            if hwnd not in self.lamps:
+                session = {"hwnd": hwnd, "title": "Simulated session",
+                           "profile": profile, "pids": set()}
+                self.lamps[hwnd] = self._make_lamp(hwnd, session)
+                self.lamps[hwnd]["frame"].pack(side="left")
+            running = (index == 0) if phase == 0 else (index == 1)
+            self._set_state(self.lamps[hwnd], "green" if running else "red")
 
     def _refresh(self):
         now = time.time()
@@ -623,10 +666,11 @@ class MonitorApp:
 
 
 def main():
-    if not sys.platform.startswith("win"):
-        sys.stderr.write("Hermes Window Monitor only runs on Windows.\n")
-        sys.exit(1)
-    MonitorApp().run()
+    parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[1])
+    parser.add_argument("--demo", action="store_true",
+                        help="preview simulated sessions without scanning processes")
+    args = parser.parse_args()
+    MonitorApp(demo=args.demo).run()
 
 
 if __name__ == "__main__":

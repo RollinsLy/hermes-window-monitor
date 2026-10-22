@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+      <title>Hermes Window Monitor — one window, one horse</title>
+      <desc>Illustration of three simulated sessions. Code is active; research and review are quiet. CPU activity is an estimate, not a task completion event.</desc>
+      <rect width="1200" height="630" fill="#f3f1e9"/>
+      <path d="M0 0H1200V12H0Z" fill="#3e5944"/>
+      <g font-family="Segoe UI,Arial,sans-serif">
+        <rect x="74" y="58" width="32" height="32" rx="8" fill="#3e5944"/>
+        <path d="M83 80V68M97 80V68M83 74H97" stroke="#f3f1e9" stroke-width="2"/>
+        <text x="118" y="81" font-size="20" font-weight="600" fill="#263d2d">Hermes Window Monitor</text>
+        <text x="1126" y="78" text-anchor="end" font-size="12" letter-spacing="2" fill="#5d6d5a">WINDOWS · MIT · LOCAL</text>
+        <text x="74" y="160" font-size="12" letter-spacing="3" fill="#6b795f">ONE WINDOW. ONE HORSE.</text>
+        <text x="70" y="224" font-size="54" font-weight="600" letter-spacing="-1.8" fill="#263d2d">Know when to jump back in.</text>
+        <text x="74" y="269" font-size="21" fill="#61705e">A small companion for your herd of Hermes chat windows.</text>
+
+        <g transform="translate(74,326)">
+          <rect width="344" height="174" rx="14" fill="#1e1e1e"/>
+          <text x="22" y="32" fill="#a7ada5" font-size="14" letter-spacing="1.5">CODE</text>
+          <g transform="translate(24,57) scale(3.3)"><polyline points="1.00,21.00 33.00,21.00" fill="none" stroke="#3a3a3a" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/><polyline points="10.00,14.30 13.18,20.00" fill="none" stroke="#3a2e1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="12.00,14.30 8.82,17.53" fill="none" stroke="#3a2e1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="19.00,14.30 15.82,20.00" fill="none" stroke="#3a2e1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="21.00,14.30 24.18,17.53" fill="none" stroke="#3a2e1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polygon points="6.00,12.30 9.00,9.30 18.00,9.30 22.00,11.30 21.00,15.30 7.00,15.30" fill="#d8a657"/><polygon points="19.00,10.30 24.00,5.30 28.00,4.30 29.00,7.30 25.00,9.30 21.00,12.30" fill="#d8a657"/><polygon points="27.00,4.30 32.00,5.30 30.00,8.30 26.00,7.30" fill="#d8a657"/><polygon points="24.00,5.30 25.00,2.30 26.00,5.30" fill="#3a2e1f"/><polyline points="24.00,5.30 20.00,7.30 18.00,9.30" fill="none" stroke="#3a2e1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="6.00,11.30 2.00,13.71 1.00,17.71" fill="none" stroke="#3a2e1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+          <circle cx="182" cy="89" r="4" fill="#d8a657"/>
+          <text x="197" y="95" fill="#eeeee7" font-size="18">Galloping</text>
+          <text x="22" y="151" fill="#d8a657" font-size="11" letter-spacing="1.4">RECENT ACTIVITY</text>
+        </g>
+        <g transform="translate(428,326)">
+          <rect width="344" height="174" rx="14" fill="#1e1e1e"/>
+          <text x="22" y="32" fill="#a7ada5" font-size="14" letter-spacing="1.5">RESEARCH</text>
+          <g transform="translate(24,57) scale(3.3)"><polyline points="1.00,21.00 33.00,21.00" fill="none" stroke="#3a3a3a" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/><polyline points="27.00,21.00 26.00,17.00" fill="none" stroke="#5fa83f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/><polyline points="27.00,21.00 28.00,18.00" fill="none" stroke="#5fa83f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/><polyline points="30.00,21.00 29.00,17.00" fill="none" stroke="#5fa83f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/><polyline points="30.00,21.00 31.00,18.00" fill="none" stroke="#5fa83f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/><polyline points="32.00,21.00 31.00,17.00" fill="none" stroke="#5fa83f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/><polyline points="32.00,21.00 33.00,18.00" fill="none" stroke="#5fa83f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/><polyline points="9.00,13.00 9.00,20.00" fill="none" stroke="#3a2e1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="11.00,13.00 11.00,20.00" fill="none" stroke="#3a2e1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="19.00,13.00 19.00,20.00" fill="none" stroke="#3a2e1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="21.00,13.00 21.00,20.00" fill="none" stroke="#3a2e1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polygon points="6.00,11.00 9.00,8.00 18.00,8.00 22.00,10.00 21.00,14.00 7.00,14.00" fill="#7a8a6a"/><polygon points="19.00,9.00 26.00,11.00 30.00,16.00 29.00,18.00 23.00,12.00 21.00,11.00" fill="#7a8a6a"/><polygon points="29.00,16.00 33.00,17.00 32.00,19.00 28.00,18.00" fill="#7a8a6a"/><polygon points="26.00,11.00 27.00,8.00 28.00,11.00" fill="#3a2e1f"/><polyline points="6.00,10.00 3.00,14.41 2.00,18.41" fill="none" stroke="#3a2e1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+          <circle cx="182" cy="89" r="4" fill="#8ca47b"/>
+          <text x="197" y="95" fill="#eeeee7" font-size="18">Grazing</text>
+          <text x="22" y="151" fill="#a7ada5" font-size="11" letter-spacing="1.4">QUIET / CHECK IN</text>
+        </g>
+        <g transform="translate(782,326)">
+          <rect width="344" height="174" rx="14" fill="#1e1e1e"/>
+          <text x="22" y="32" fill="#a7ada5" font-size="14" letter-spacing="1.5">REVIEW</text>
+          <g transform="translate(24,57) scale(3.3)"><polyline points="1.00,21.00 33.00,21.00" fill="none" stroke="#3a3a3a" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/><polyline points="27.00,21.00 26.00,17.00" fill="none" stroke="#5fa83f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/><polyline points="27.00,21.00 28.00,18.00" fill="none" stroke="#5fa83f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/><polyline points="30.00,21.00 29.00,17.00" fill="none" stroke="#5fa83f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/><polyline points="30.00,21.00 31.00,18.00" fill="none" stroke="#5fa83f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/><polyline points="32.00,21.00 31.00,17.00" fill="none" stroke="#5fa83f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/><polyline points="32.00,21.00 33.00,18.00" fill="none" stroke="#5fa83f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/><polyline points="9.00,13.00 9.00,20.00" fill="none" stroke="#3a2e1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="11.00,13.00 11.00,20.00" fill="none" stroke="#3a2e1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="19.00,13.00 19.00,20.00" fill="none" stroke="#3a2e1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="21.00,13.00 21.00,20.00" fill="none" stroke="#3a2e1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polygon points="6.00,11.00 9.00,8.00 18.00,8.00 22.00,10.00 21.00,14.00 7.00,14.00" fill="#7a8a6a"/><polygon points="19.00,9.00 26.00,11.00 30.00,16.00 29.00,18.00 23.00,12.00 21.00,11.00" fill="#7a8a6a"/><polygon points="29.00,16.00 33.00,17.00 32.00,19.00 28.00,18.00" fill="#7a8a6a"/><polygon points="26.00,11.00 27.00,8.00 28.00,11.00" fill="#3a2e1f"/><polyline points="6.00,10.00 3.00,14.41 2.00,18.41" fill="none" stroke="#3a2e1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+          <circle cx="182" cy="89" r="4" fill="#8ca47b"/>
+          <text x="197" y="95" fill="#eeeee7" font-size="18">Grazing</text>
+          <text x="22" y="151" fill="#a7ada5" font-size="11" letter-spacing="1.4">QUIET / CHECK IN</text>
+        </g>
+        <path d="M74 540H1126" stroke="#d8dcd0"/>
+        <text x="74" y="574" font-size="15" fill="#40563f">Always on top</text>
+        <text x="319" y="574" font-size="15" fill="#40563f">Click to focus</text>
+        <text x="554" y="574" font-size="15" fill="#40563f">No account or API key</text>
+        <text x="1126" y="574" text-anchor="end" font-size="11" fill="#74806d">ILLUSTRATED PREVIEW · SIMULATED STATES</text>
+      </g>
+    </svg>

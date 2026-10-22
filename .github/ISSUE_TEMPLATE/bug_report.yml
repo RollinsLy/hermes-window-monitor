@@ -1,0 +1,31 @@
+name: Bug report / 问题反馈
+description: Report a reproducible problem with monitoring or focusing a window.
+labels: [bug]
+body:
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment / 运行环境
+      description: Windows, Python, Hermes, and terminal versions. Does --demo work?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce / 复现步骤
+      description: Explain how you launched the sessions and the monitor. Redact private paths and arguments.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Expected and actual behavior / 预期与实际
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Before submitting
+      options:
+        - label: I removed API keys, chat content, and private window titles from this report.
+          required: true

@@ -23,3 +23,7 @@ _*_test.py
 _diag*.py
 _diag*.log
 *.log
+
+# Local browser verification artifacts
+.playwright-cli/
+output/
